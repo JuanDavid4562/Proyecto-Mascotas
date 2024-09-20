@@ -7,7 +7,7 @@ from historial_medico import HistorialMedico
 from citas import Citas
 from productos import Productos
 from servicios import Servicios
-from registros import Registros  # Asegúrate de importar la clase Registros
+from registros import Registros
 
 class Menu:
     def __init__(self):
@@ -20,7 +20,7 @@ class Menu:
         self.citas = Citas()
         self.productos = Productos()
         self.servicios = Servicios()
-        self.registros = Registros()  # Instancia de la clase Registros
+        self.registros = Registros()
 
     def show_main_menu(self):
         while True:
@@ -41,37 +41,26 @@ class Menu:
             
             if choice == '1':
                 self.show_mascota_menu()
-                
             elif choice == '2':
                 self.show_usuarios_menu()
-            
             elif choice == '3':
                 self.show_administradores_menu()
-            
             elif choice == '4':
                 self.show_veterinarios_menu()
-            
             elif choice == '5':
                 self.show_propietarios_menu()
-                
             elif choice == '6':
                 self.show_historial_medico_menu()
-                
             elif choice == '7':
                 self.show_citas_menu()
-                
             elif choice == '8':
                 self.show_productos_menu()
-                
             elif choice == '9':
                 self.show_servicios_menu()
-                
             elif choice == '10':
                 self.show_registros_menu() 
-            
             elif choice == '11':
                 break
-            
             else:
                 print("Opción no válida. Inténtelo de nuevo.")
 
@@ -90,37 +79,54 @@ class Menu:
 
             if choice == '1':
                 propietarios_y_mascotas = self.registros.ver_propietarios_y_mascotas()
-                for registro in propietarios_y_mascotas:
-                    print(registro)
+                if propietarios_y_mascotas:
+                    for registro in propietarios_y_mascotas:
+                        print(registro)
+                else:
+                    print("No hay propietarios ni mascotas disponibles.")
 
             elif choice == '2':
                 todos_los_usuarios = self.registros.ver_todos_los_usuarios()
-                for usuario in todos_los_usuarios:
-                    print(usuario)
+                if todos_los_usuarios:
+                    for usuario in todos_los_usuarios:
+                        print(usuario)
+                else:
+                    print("No hay usuarios disponibles.")
 
             elif choice == '3':
                 veterinarios_y_citas = self.registros.ver_veterinarios_y_citas()
-                for registro in veterinarios_y_citas:
-                    print(registro)
+                if veterinarios_y_citas:
+                    for registro in veterinarios_y_citas:
+                        print(registro)
+                else:
+                    print("No hay veterinarios ni citas disponibles.")
 
             elif choice == '4':
                 citas_y_servicios = self.registros.ver_citas_y_servicios()
-                for registro in citas_y_servicios:
-                    print(registro)
+                if citas_y_servicios:
+                    for registro in citas_y_servicios:
+                        print(registro)
+                else:
+                    print("No hay citas ni servicios disponibles.")
 
             elif choice == '5':
                 citas_y_mascotas = self.registros.ver_citas_y_mascotas()
-                for registro in citas_y_mascotas:
-                    print(registro)
+                if citas_y_mascotas:
+                    for registro in citas_y_mascotas:
+                        print(registro)
+                else:
+                    print("No hay citas ni mascotas disponibles.")
 
             elif choice == '6':
                 mascotas_y_historial_medico = self.registros.ver_mascotas_y_historial_medico()
-                for registro in mascotas_y_historial_medico:
-                    print(registro)
+                if mascotas_y_historial_medico:
+                    for registro in mascotas_y_historial_medico:
+                        print(registro)
+                else:
+                    print("No hay mascotas ni historial médico disponible.")
 
             elif choice == '7':
                 break
-
             else:
                 print("Opción no válida. Inténtelo de nuevo.")
     
