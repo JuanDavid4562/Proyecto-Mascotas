@@ -7,6 +7,7 @@ from historial_medico import HistorialMedico
 from citas import Citas
 from productos import Productos
 from servicios import Servicios
+from registros import Registros  # Asegúrate de importar la clase Registros
 
 class Menu:
     def __init__(self):
@@ -19,6 +20,7 @@ class Menu:
         self.citas = Citas()
         self.productos = Productos()
         self.servicios = Servicios()
+        self.registros = Registros()  # Instancia de la clase Registros
 
     def show_main_menu(self):
         while True:
@@ -32,7 +34,8 @@ class Menu:
             print("7. Citas")
             print("8. Productos")
             print("9. Servicios")
-            print("10. Salir")
+            print("10. Ver Registros")
+            print("11. Salir")
             
             choice = input("Ingrese su opción: ")
             
@@ -62,10 +65,62 @@ class Menu:
                 
             elif choice == '9':
                 self.show_servicios_menu()
-
+                
             elif choice == '10':
+                self.show_registros_menu() 
+            
+            elif choice == '11':
                 break
             
+            else:
+                print("Opción no válida. Inténtelo de nuevo.")
+
+    def show_registros_menu(self):
+        while True:
+            print("\nMenú de Registros:")
+            print("1. Ver Propietarios y Mascotas")
+            print("2. Ver Todos los Usuarios")
+            print("3. Ver Veterinarios y Citas")
+            print("4. Ver Citas y Servicios")
+            print("5. Ver Citas y Mascotas")
+            print("6. Ver Mascotas y Historial Médico")
+            print("7. Volver al menú principal")
+
+            choice = input("Ingrese su opción: ")
+
+            if choice == '1':
+                propietarios_y_mascotas = self.registros.ver_propietarios_y_mascotas()
+                for registro in propietarios_y_mascotas:
+                    print(registro)
+
+            elif choice == '2':
+                todos_los_usuarios = self.registros.ver_todos_los_usuarios()
+                for usuario in todos_los_usuarios:
+                    print(usuario)
+
+            elif choice == '3':
+                veterinarios_y_citas = self.registros.ver_veterinarios_y_citas()
+                for registro in veterinarios_y_citas:
+                    print(registro)
+
+            elif choice == '4':
+                citas_y_servicios = self.registros.ver_citas_y_servicios()
+                for registro in citas_y_servicios:
+                    print(registro)
+
+            elif choice == '5':
+                citas_y_mascotas = self.registros.ver_citas_y_mascotas()
+                for registro in citas_y_mascotas:
+                    print(registro)
+
+            elif choice == '6':
+                mascotas_y_historial_medico = self.registros.ver_mascotas_y_historial_medico()
+                for registro in mascotas_y_historial_medico:
+                    print(registro)
+
+            elif choice == '7':
+                break
+
             else:
                 print("Opción no válida. Inténtelo de nuevo.")
     
